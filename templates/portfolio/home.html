@@ -1,0 +1,51 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}Home - My Portfolio{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <img src="{% static 'portfolio/images/profile.jpg' %}" alt="Profile Picture" class="profile-img">
+    <h1>John Smith</h1>
+    <h2>Django Developer</h2>
+    <p class="intro">
+        I am a passionate developer who enjoys building clean and functional web applications
+        using Python and Django. Welcome to my personal portfolio website.
+    </p>
+    <div class="hero-buttons">
+        <a href="{% url 'projects' %}" class="btn btn-primary">View Projects</a>
+        <a href="{% url 'contact' %}" class="btn btn-secondary">Contact Me</a>
+    </div>
+</section>
+
+<section class="about">
+    <h2>About Me</h2>
+    <p>
+        I am a final year Computer Science student with a strong interest in web development.
+        Over the past two years I have built several projects using Python and Django, and I enjoy
+        turning ideas into working applications from the ground up.
+    </p>
+    <h3>Education</h3>
+    <p>Bachelor of Science in Computer Science, Greenwood University, 2022 - 2026</p>
+    <h3>Interests</h3>
+    <p>Web Development, Python Programming, Graphic Designing, Open Source Projects</p>
+    <h3>Career Goal</h3>
+    <p>To work as a full stack Django developer and contribute to building reliable, user friendly web applications.</p>
+</section>
+
+<section class="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+        {% for skill in skills %}
+            <div class="skill-card">
+                <p class="skill-name">{{ skill.name }}</p>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: {{ skill.level }}%;"></div>
+                </div>
+            </div>
+        {% empty %}
+            <p>Skills will be listed here once added through the admin panel.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
